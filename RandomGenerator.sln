@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.15
+VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RandomGenerator", "RandomGenerator\RandomGenerator.vcxproj", "{9ADBB3E7-CBB5-4F6C-8C63-6D2D5A7360E6}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "InverseTest", "InverseTest\InverseTest.vcxproj", "{ABC4ED7F-C108-4F6C-8936-7DD44D13AB6C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,8 +23,19 @@ Global
 		{9ADBB3E7-CBB5-4F6C-8C63-6D2D5A7360E6}.Release|x64.Build.0 = Release|x64
 		{9ADBB3E7-CBB5-4F6C-8C63-6D2D5A7360E6}.Release|x86.ActiveCfg = Release|Win32
 		{9ADBB3E7-CBB5-4F6C-8C63-6D2D5A7360E6}.Release|x86.Build.0 = Release|Win32
+		{ABC4ED7F-C108-4F6C-8936-7DD44D13AB6C}.Debug|x64.ActiveCfg = Debug|x64
+		{ABC4ED7F-C108-4F6C-8936-7DD44D13AB6C}.Debug|x64.Build.0 = Debug|x64
+		{ABC4ED7F-C108-4F6C-8936-7DD44D13AB6C}.Debug|x86.ActiveCfg = Debug|Win32
+		{ABC4ED7F-C108-4F6C-8936-7DD44D13AB6C}.Debug|x86.Build.0 = Debug|Win32
+		{ABC4ED7F-C108-4F6C-8936-7DD44D13AB6C}.Release|x64.ActiveCfg = Release|x64
+		{ABC4ED7F-C108-4F6C-8936-7DD44D13AB6C}.Release|x64.Build.0 = Release|x64
+		{ABC4ED7F-C108-4F6C-8936-7DD44D13AB6C}.Release|x86.ActiveCfg = Release|Win32
+		{ABC4ED7F-C108-4F6C-8936-7DD44D13AB6C}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {749EDCC9-C8DE-48EC-9024-AB0C7FCF0111}
 	EndGlobalSection
 EndGlobal
