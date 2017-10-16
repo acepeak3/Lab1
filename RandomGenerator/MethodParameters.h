@@ -32,8 +32,8 @@ struct Method3Parameters
 struct Method4Parameters
 {
 	static const uint64_t
-		m = 4294967291, 
-		a = 4294967279 + 1, 
+		m = 4294967291,
+		a = 4294967291 + 1,
 		c = 1111111111,
 		X0 = 222222222;
 };
@@ -44,6 +44,27 @@ struct Method5Parameters
 		m = 4294967291,
 		a = 4294967279 + 1,
 		c = 1111111111,
-		X0 = 222222222,
-		d = 4294967279;
+		d = 4294967279,
+		X0 = 222222222;
+};
+
+struct Method6Parameters
+{
+	static const uint64_t
+		mu = 0,
+		sigma = 1,
+		six = 6,
+		twelve = 12,
+		X0 = 222222222;
+};
+
+struct Method7Parameters
+{
+	static const uint64_t
+		mu = 0,
+		sigma = 1,
+		six = 6,
+		twelve = 12,
+		X1 = 222222222,
+		X2 = 333333333;
 };

@@ -1,7 +1,8 @@
 #include "GenerateMethods.h"
 
 GenerateMethods::GenerateMethods() :
-	methodNumber_(1)
+	methodNumber_(3),
+	Sum_(0)
 {
 }
 
@@ -15,6 +16,12 @@ void GenerateMethods::setMethod(const int _methodNumber)
 
 	switch (methodNumber_)
 	{
+	case 6:
+		SetupMethod6Random();
+	case 5:
+		SetupMethod5Random();
+	case 4:
+		SetupMethod4Random();
 	case 3:
 		SetupMethod3Random();
 	case 2:
@@ -29,6 +36,12 @@ double GenerateMethods::rand()
 {
 	switch (methodNumber_)
 	{
+	case 6:
+		return Method6Random();
+	case 5:
+		return Method5Random();
+	case 4:
+		return Method4Random();
 	case 3:
 		return Method3Random();
 	case 2:
@@ -47,7 +60,6 @@ double GenerateMethods::Metod1X()
 {
 	return (Method1Parameters::a * X_ + Method1Parameters::c) % Method1Parameters::m;
 }
-
 
 double GenerateMethods::Method1Random()
 {
@@ -87,25 +99,38 @@ double GenerateMethods::Method3Random()
 	return (double)previousX / Method3Parameters::m;
 }
 
-uint64_t GenerateMethods::Inverse(uint64_t _value, uint64_t _mod)
+uint64_t GenerateMethods::Inverse(const uint64_t _value, const uint64_t _mod)
 {
-	uint64_t result = 1;
+	uint64_t n = _value, m = _mod, a = 1, b = 0, c = 0, d = 1;
 
-	while (_value * result %  _mod != 1) result++;
+	if (n >= m)
+	{
+		n %= m;
+	}
 
-	return result;
-	
-	/*
-	int i = 1;
+	bool evenStep = true;
 
-	while ((x4*i) % p != 1) i++;
+	while ((n != 1) && (m != 1))
+	{
+		if (evenStep)
+		{
+			uint64_t k = m / n;
+			m %= n;
+			a += c*k;
+			b += d*k;
+		}
+		else
+		{
+			uint64_t k = n / m;
+			n %= m;
+			c += a*k;
+			d += b*k;
+		}
 
-	x4 = (e * i + f) % p;
+		evenStep = !evenStep;
+	}
 
-	u = static_cast<double>(x4) / m;
-
-	return u;
-	*/
+	return (evenStep ? d : _mod - b);
 
 }
 
@@ -135,4 +160,46 @@ double GenerateMethods::Method5Random()
 	X_ = (X_ - Y_) % Method5Parameters::m;
 
 	return (double)X / Method1Parameters::m;
+}
+
+void GenerateMethods::SetupMethod6Random()
+{
+	X_ = Method4Parameters::X0;
+}
+
+double GenerateMethods::Method6Random()
+{
+	const uint64_t X = X_;
+
+	for (size_t i = 0; i < Method6Parameters::twelve; ++i)
+		Sum_ += Method1Random();
+
+	return X_ = Method6Parameters::mu + (Sum_ - Method6Parameters::six) * Method6Parameters::sigma;
+}
+
+void GenerateMethods::SetupMethod7Random()
+{
+	X_ = Method4Parameters::X0;
+}
+
+double GenerateMethods::Method7Random()
+{
+	const uint64_t X = X_;
+
+	X_ = Metod1X();
+	Y_ = Metod2X();
+
+	uint64_t V1 = 2 * X_ - 1;
+	uint64_t V2 = 2 * Y_ - 1;
+
+	X_ = V1 * V1 + V2 * V2;
+
+	if (X_ < 1)
+	{
+		X_ = V1 * sqrt(-2 * log(X_) / X_);
+		Y_ = V2 * sqrt(-2 * log(X_) / X_);
+	}
+
+	//if
+		return X_;
 }
